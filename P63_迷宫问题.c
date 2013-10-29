@@ -1,12 +1,12 @@
 /*************************************************************************
-# Copyright:     1994-2013
+# Copyright:     1994-
 # File Name:     P63_迷宫问题.c
 # Description:
 # Author:        WangHuaJie
 # Version:
 # Date:          2013年10月28日 星期一 18时31分42秒
 # History:       1.10.28搭好了基本框架
-#				 2.将本文件成功上传到github
+#				 2.上传代码到了github上
  ************************************************************************/
 
 #include<stdio.h>
@@ -24,6 +24,16 @@
 #define LONG	50
 #define ROW		14
 #define COL		10
+
+#define (maze[s->rode[s->step][0] - 1][s->rode[s->step][1]] == 1)	   GO_N
+#define (maze[s->rode[s->step][0] - 1][s->rode[s->step][1] + 1] == 1)  GO_EN
+#define (maze[s->rode[s->step][0]][s->rode[s->step][1] + 1] == 1)	   GO_E
+#define (maze[s->rode[s->step][0] + 1][s->rode[s->step][1] + 1] == 1)  GO_ES
+#define (maze[s->rode[s->step][0] + 1][s->rode[s->step][1]] == 1)      GO_S
+#define (maze[s->rode[s->step][0] + 1][s->rode[s->step][1] - 1] == 1)  GO_WS
+#define (maze[s->rode[s->step][0]][s->rode[s->step][1] - 1] == 1)      GO_W
+#define (maze[s->rode[s->step][0] - 1][s->rode[s->step][1] - 1] == 1)  GO_WN
+
 typedef	struct
 {
 	int save_point[][];					//保留点，在搜索过程中，如果
@@ -31,7 +41,7 @@ typedef	struct
 										//将作为保留点
 	int rode[LONG][2];                  //记录了当前是第LONG步，二维位
 	int step;							//置是rode[LONG][0],
-	int	Dir[8]							//rodd[LONG][1]
+	int	Dir[8];							//rodd[LONG][1]
 }WAY,*WAYP;                             //记录当前能走的方向，
 										//Dir[8]={1,2,3,0,5,0,7,8}
 										//则代表ES和WS方向不通，当然
@@ -39,7 +49,7 @@ typedef	struct
 										//，八个方向初始化都
 										//为0
 
-WAYP Init_way()
+WAYP Init_way(void)
 {
 	WAYP	s;
 	s = (WAYP)malloc(sizeof(WAY));
@@ -47,7 +57,7 @@ WAYP Init_way()
 	return s;
 }
 
-int Go_ahead(WAYP s,int m, int n)
+int Go_ahead(WAYP s,int m, int n, int )
 {
 	if(s->step == LONG -1)
 		return -1;
@@ -95,22 +105,7 @@ void Search_way(WAYP s,*maze[])
 	while(s->rode[s->step][0] != (ROW-2) && s->rode[s-step][1] 
 			!= (COL-2))
 	{
-		if(maze[s->rode[s->step][0] - 1][s->rode[s->step][1]] == 1)
-			s->Dir[0] = N;
-		if(maze[s->rode[s->step][0] - 1][s->rode[s->step][1] + 1] == 1)
-			s->Dir[1] = EN;
-		if(maze[s->rode[s->step][0]][s->rode[s->step][1] + 1] == 1)
-			s->Dir[2] = E;
-		if(maze[s->rode[s->step][0] + 1][s->rode[s->step][1] + 1] == 1)
-			s->Dir[3] = ES;
-		if(maze[s->rode[s->step][0] + 1][s->rode[s->step][1]] == 1)
-			s->Dir[4] = S;
-		if(maze[s->rode[s->step][0] + 1][s->rode[s->step][1] - 1] == 1)
-			s->Dir[5] = WS;
-		if(maze[s->rode[s->step][0]][s->rode[s->step][1] - 1] == 1)
-			s->Dir[6] = W;
-		if(maze[s->rode[s->step][0] - 1][s->rode[s->step][1] - 1] == 1)
-			s->Dir[7] = WN;
+	
 	}
 }
 
