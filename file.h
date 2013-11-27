@@ -14,11 +14,6 @@
 #define Datatype char
 
 /*
- *
- */
-#define BINSTACK_MAXSIZE 1024
-
-/*
  *定义节点的结构体
  */
 typedef struct Node
@@ -80,6 +75,11 @@ Get_Bintree_floors(void);
  */
 
 /*
+ *
+ */
+#define BINSTACK_MAXSIZE 1024
+
+/*
  *定义二叉树节点栈结构体
  */
 typedef	struct
@@ -136,3 +136,52 @@ Unrecursive_Inorder(Bitree root);
  */
 void
 Unrecursive_Postorder(Bitree root);
+
+/*
+ * *************************************************************
+ */
+
+/*
+ *
+ */
+#define BINQUEUE_MAXSIZE 1024
+
+/* 
+ *定义二叉树节点的队结构体
+ */
+typedef	struct
+{
+	Bitree binode_pointer[BINQUEUE_MAXSIZE];
+	int front,
+		rear;
+}Binqueue;
+
+/*
+ *初始化队
+ */
+Binqueue *
+Init_Binqueue(void);
+
+/*
+ *判队空
+ */
+int
+Binqueue_Isempty(Binqueue *s);
+
+/*
+ *入队
+ */
+int 
+Binqueue_Push(Binqueue *s, Bitree node);
+
+/*
+ *出队
+ */
+int
+Binqueue_Pop(Binqueue *s,Bitree *x);
+
+/*
+ *
+ */
+void
+Levelorder(Bitree root);

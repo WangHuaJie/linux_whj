@@ -54,6 +54,21 @@ Build_Full_Bintree(Bitree Root,int floors)
 	}
 	return ;
 }
+/*
+ *
+ */
+Bitree
+Build_Full_Bintree1(int floors)
+{
+	Bitree Root;
+	Root = (Bitree)malloc(sizeof(Bitnode));
+	Root->Lc = NULL;
+	Root->Rc = NULL;
+
+	Build_Full_Bintree(Root, floors);
+
+	return Root;
+}
 
 /*
  *初始化二叉树数据
@@ -125,26 +140,20 @@ Postorder(Bitree Root)
 	return;
 }
 
+/*
+ *
+ */
 int 
-main(void)
+Get_Bintree_floors(void)
 {
-	/*
-	 * 用来存储二叉树的层数
-	 */
-	int floots = 3;
-
-	Bitree Root = (Bitree)malloc(sizeof(Bitnode));
-	Root->Lc = NULL;
-	Root->Rc = NULL;
-
-	Build_Full_Bintree(Root, floots);
-	Init_tree_data(Root);
-	Preorder(Root);
-	printf("\n");
-	Inorder(Root);
-	printf("\n");
-	Postorder(Root);
-	printf("\n");
-
-	return 0;
+	int floors;
+	scanf("%d",&floors);
+	if(floors >= 1)
+		return floors;
+	else 
+	{
+		printf("Input error!\n");
+		exit(0);
+	}
 }
+

@@ -26,6 +26,7 @@ main(void)
 	Unrecursive_Preorder(Root);
 	Unrecursive_Inorder(Root);
 	Unrecursive_Postorder(Root);
+	Levelorder(Root);
 
 	return 0;
 }
