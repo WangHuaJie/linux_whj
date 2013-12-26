@@ -87,10 +87,10 @@ Show(Node *head)
 int
 main(void)
 {
+    head = (Node*)malloc(sizeof(Node));
+    head->data = -32768;
+    head->next = NULL;
 
-head = (Node*)malloc(sizeof(Node));
-head->data = -32768;
-head->next = NULL;
     Build_sort();
     Show(head);
 
